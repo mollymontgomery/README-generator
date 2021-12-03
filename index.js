@@ -1,6 +1,5 @@
 // TODO: Include packages needed for this application
-var commandLineArgs = process.argv;
-console.log(commandLineArgs);
+
 // TODO: Create an array of questions for user input
 const questions = [];
 
