@@ -48,6 +48,47 @@ return inquirer.prompt([
         type: 'input',
         name: 'instructions',
         message: 'Provide some installation instructions about your project:',
+    },
+    {
+        type: 'input',
+        name: 'usage',
+        message: "Please enter Usage information: (Required)",
+        validate: usageInput => {
+            if (usageInput) {
+                return true;
+            } else {
+                console.log('Please enter the usage information of your project!');
+                return false;
+            }
+        }
+    },
+    {
+        type: 'confirm',
+        name: 'confirmContribution',
+        message: 'Would you like to enter Contribution Guidelines?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'contribution',
+        message: 'Provide some contribution guidelines to your project:',
+    },
+    {
+        type: 'confirm',
+        name: 'confirmTests',
+        message: 'Would you like to enter Test Instructions?',
+        default: true
+    },
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Provide some test instructions to your project:',
+    },
+    {
+        type: 'checkbox',
+        name: 'license',
+        message: 'Please choose your license from this list of options:',
+        choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
     }
 ])
 
