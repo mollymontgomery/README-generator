@@ -10,8 +10,37 @@ const inquirer = require('inquirer');
 //});
 
 // TODO: Create an array of questions for user input
-const questions = [];
+//const questions = [];
+const promptUser = () => {
 return inquirer.prompt([
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Enter your GitHub Username (Required)',
+        validate: githubInput => {
+          if (githubInput) {
+            return true;
+          } else {
+            console.log('Please enter your GitHub username!');
+            return false;
+          }
+        }
+      },
+    ]);
+  };
+  
+const promptProject = readmeData => {
+    console.log(`
+================
+Add a New README
+================
+    `)
+
+    if (!readmeData.readme) {
+        readmeData.readme = [];
+    }
+    return inguirer
+        .prompt ([ 
     {
         type: 'input',
         name: 'title',
@@ -91,6 +120,20 @@ return inquirer.prompt([
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
     }
 ])
+.then(projectData => {
+    readmeData.projects.push(readmeData);
+    if (readmeData.confirmAddReadme) {
+        return promptProject(readmeData);
+    } else {
+        return readmeData;
+    }
+});
+};
+
+promptUser()
+.then(promptProject)
+//.then(answers => console.log(answers))
+.then(projectAnswers => console.log(projectAnswers));
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
