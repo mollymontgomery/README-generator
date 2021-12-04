@@ -2,7 +2,7 @@
 const fs = require('fs')
 const inquirer = require('inquirer');
     console.log(inquirer)
-
+//const generateFile = ('generateMarkdown');
 
 
 // TODO: Create an array of questions for user input
@@ -152,27 +152,29 @@ Add a New README
 
 promptUser()
 .then(promptProject)
-.then(readmeData => {
-    return generateFile(readmeData)
-})
-.then(readme => {
-    return writeFile(readme);
-})
-.catch(err => {
-    console.log(err);
-});
-//.then(projectAnswers => console.log(projectAnswers));
+//.then(readmeData => {
+   // return generateFile(readmeData)
+//})
+//.then(readme => {
+   // return writeFile(readme);
+//})
+//.catch(err => {
+    //console.log(err);
+//});
+.then(projectAnswers => console.log(projectAnswers));
 
 // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {
-//const generateFile = require('./src/readme-template');
-fs.writeFile('./src/readme.md', readme, err => {
+function writeToFile(fileName, data) {
+const generateFile = require('./src/readme-template');
+    console.log(generateFile)
+//fs.writeFile('./src/readme.md', readme, err => {
     if (err) {
         console.log(err);
         return;
     } 
     console.log('README is complete! Check out readme.md to see the output!')
-});
+};
+
 
 // TODO: Create a function to initialize app
 function init() {}
