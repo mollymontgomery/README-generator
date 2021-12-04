@@ -39,7 +39,7 @@ Add a New README
     if (!readmeData.readme) {
         readmeData.readme = [];
     }
-    return inguirer
+    return inquirer
         .prompt ([ 
     {
         type: 'input',
@@ -121,6 +121,8 @@ Add a New README
     }
 ])
 .then(projectData => {
+    console.log(projectData);
+    console.log(readmeData);
     readmeData.projects.push(readmeData);
     if (readmeData.confirmAddReadme) {
         return promptProject(readmeData);
