@@ -3,11 +3,7 @@ const fs = require('fs')
 const inquirer = require('inquirer');
     console.log(inquirer)
 
-//const generateFile = require('./src/readme-template');
-//fs.writeFile('./readme.md', generateFile, err => {
-    //if (err) throw err;
-    //console.log('README is complete! Check out readme.md to see the output!')
-//});
+
 
 // TODO: Create an array of questions for user input
 //const questions = [];
@@ -77,6 +73,13 @@ Add a New README
         type: 'input',
         name: 'instructions',
         message: 'Provide some installation instructions about your project:',
+        when: ({ confirmInstructions }) => {
+            if (confirmInstructions) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     },
     {
         type: 'input',
@@ -95,23 +98,36 @@ Add a New README
         type: 'confirm',
         name: 'confirmContribution',
         message: 'Would you like to enter Contribution Guidelines?',
-        default: true
     },
     {
         type: 'input',
         name: 'contribution',
-        message: 'Provide some contribution guidelines to your project:',
+       message: 'Provide some contribution guidelines to your project:',
+       when: ({ confirmContributions }) => {
+        if (confirmContributions) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     },
     {
         type: 'confirm',
         name: 'confirmTests',
         message: 'Would you like to enter Test Instructions?',
-        default: true
+        default: false
     },
     {
         type: 'input',
         name: 'tests',
         message: 'Provide some test instructions to your project:',
+        when: ({ confirmTests }) => {
+            if (confirmTests ) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     },
     {
         type: 'checkbox',
@@ -120,9 +136,7 @@ Add a New README
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
     }
 ])
-.then(projectData => {
-    console.log(projectData);
-    console.log(readmeData);
+.then(readmeData => {
     readmeData.projects.push(readmeData);
     if (readmeData.confirmAddReadme) {
         return promptProject(readmeData);
@@ -138,8 +152,13 @@ promptUser()
 .then(projectAnswers => console.log(projectAnswers));
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
+function writeToFile(fileName, data) {
+const generateFile = require('./src/readme-template');
+fs.writeFile('./readme.md', generateFile, err => {
+    if (err) throw err;
+    console.log('README is complete! Check out readme.md to see the output!')
+});
+};
 // TODO: Create a function to initialize app
 function init() {}
 
