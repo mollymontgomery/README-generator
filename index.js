@@ -159,7 +159,7 @@ promptUser()
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
 const generateFile = require('./src/readme-template');
-fs.writeFile('./readme.md', generateFile, err => {
+fs.writeFile('./readme.md', generateFile (readmeData), err => {
     if (err) throw err;
     console.log('README is complete! Check out readme.md to see the output!')
 });

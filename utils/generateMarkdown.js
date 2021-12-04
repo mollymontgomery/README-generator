@@ -16,6 +16,26 @@ const fs = require('fs');
 function generateMarkdown(data) {
   return `# ${data.title}
 
+  ## Description
+  ${data.description}
+
+  ## License
+  ${license}
+
+  ## Table of Contents
+
+  ## Installation
+  ${data.install}
+
+  ## Usage
+  ${data.usage}
+
+  ## Contributions
+  ${data.contribution}
+
+  ## Tests
+  ${data.tests}
+
 `;
 }
 
