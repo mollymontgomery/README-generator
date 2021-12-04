@@ -136,34 +136,44 @@ Add a New README
         choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
     }
 ])
-.then(readmeData => {
-    let newArray= [];
-    newArray.push(readmeData);
-console.log("newArray:" + newArray)
-   //readmeData.projects.push(readmeData);
-
-   // if (readmeData.confirmAddReadme) {
-        //return promptProject(readmeData);
-   // } else {
-        //return readmeData;
-   // }
-   console.log("readmeData:" + readmeData)
+.then(projectData => {
+    readmeData.projects.push(projectData);
+    if (projectData.confirmAddProject) {
+        return promptProject(readmeData);
+    } else {
+        return readmeData;
+    }
+    // let newArray= [];
+    // newArray.push(readmeData);
+    // console.log("newArray:" + newArray)
+   // console.log("readmeData:" + readmeData)
 });
 };
 
 promptUser()
 .then(promptProject)
-//.then(answers => console.log(answers))
-.then(projectAnswers => console.log(projectAnswers));
+.then(readmeData => {
+    return generateFile(readmeData)
+})
+.then(readme => {
+    return writeFile(readme);
+})
+.catch(err => {
+    console.log(err);
+});
+//.then(projectAnswers => console.log(projectAnswers));
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-const generateFile = require('./src/readme-template');
-fs.writeFile('./readme.md', generateFile (readmeData), err => {
-    if (err) throw err;
+// function writeToFile(fileName, data) {
+//const generateFile = require('./src/readme-template');
+fs.writeFile('./src/readme.md', readme, err => {
+    if (err) {
+        console.log(err);
+        return;
+    } 
     console.log('README is complete! Check out readme.md to see the output!')
 });
-};
+
 // TODO: Create a function to initialize app
 function init() {}
 
