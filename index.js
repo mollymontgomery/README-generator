@@ -137,12 +137,17 @@ Add a New README
     }
 ])
 .then(readmeData => {
-    readmeData.projects.push(readmeData);
-    if (readmeData.confirmAddReadme) {
-        return promptProject(readmeData);
-    } else {
-        return readmeData;
-    }
+    let newArray= [];
+    newArray.push(readmeData);
+console.log("newArray:" + newArray)
+   //readmeData.projects.push(readmeData);
+
+   // if (readmeData.confirmAddReadme) {
+        //return promptProject(readmeData);
+   // } else {
+        //return readmeData;
+   // }
+   console.log("readmeData:" + readmeData)
 });
 };
 
