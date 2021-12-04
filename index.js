@@ -32,8 +32,8 @@ Add a New README
 ================
     `)
 
-    if (!readmeData.readme) {
-        readmeData.readme = [];
+    if (!readmeData.projects) {
+        readmeData.projects = [];
     }
     return inquirer
         .prompt ([ 
