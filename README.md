@@ -1,12 +1,10 @@
-# as;ldk
+# a;l
 
   ## Description
-  a;sdlk
+  a;
 
   ## License
-
-    [![LicenseBadge](https://img.shields.io/badge/License-MIT-green.svg)](https://img.shields.io/badge/License-MIT-green.svg)
-    
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
   ## Table of Contents
   
@@ -18,17 +16,17 @@
 
 
   ## Installation
-  // going to need to rename this
+  undefined
 
   ## Usage
-  as;lkjf
+  ;l
 
   ## Contributions
-  ;dsalk
+  undefined
 
   ## Tests
-  ;asdlk
+  undefined
 
   ## Questions
 
-  If you have any questions regarding the repo please contact d;lkfja;lkf@gmail.com and see my other work on my github at a;slkjf 
+  If you have any questions regarding the repo please contact a;dlfk and see my other work on my github at lkdjf 
