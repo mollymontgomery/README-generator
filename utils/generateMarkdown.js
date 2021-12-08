@@ -10,7 +10,14 @@ function renderLicenseBadge(license) {
 };
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  if (license !== "None") {
+    return `
+    (https://img.shields.io/badge/License-${license}-green.svg)
+    `;
+    return '';
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -32,13 +39,15 @@ function generateMarkdown(data) {
 
   ## License
 ${renderLicenseBadge(data.license)}
+${renderLicenseLink(data.license)}
 
   ## Table of Contents
   
-  *[Installation](#installation)
-  *[Usage](#usage)
-  *[Contributions](#contributions)
+  *[Installation](#installation)<br>
+  *[Usage](#usage)<br>
+  *[Contributions](#contributions)<br>
   *[Tests](#tests)
+  *[Questions] (#questions)
 
 
   ## Installation
@@ -55,7 +64,7 @@ ${renderLicenseBadge(data.license)}
 
   ## Questions
 
-  If you ahve any questions regarding the repo please contact //pu email here and see my other work at //put gibhub here
+  If you have any questions regarding the repo please contact ${data.email} and see my other work on my github at ${data.github} 
 `;
 }
 

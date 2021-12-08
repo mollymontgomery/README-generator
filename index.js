@@ -118,10 +118,23 @@ const generateMarkDown = require("./utils/generateMarkdown")
                     }
                 }
             },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'Enter your email (Required)',
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter your email!');
+                        return false;
+                    }
+                }
+            },
         ])
         .then(projectData => {
             writeToFile("ReadMe.md", generateMarkDown({ ...projectData }))
-
+            console.log('README is complete! Check out ReadMe.md to see the output!')
         });
 
 
