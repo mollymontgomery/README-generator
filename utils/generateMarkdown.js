@@ -1,9 +1,9 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  if (license === "None") {
+  if (license !== "None") {
     return `
-    ![LicenseBadge](https://img.shields.io/badge/License-${License}-green)
+    ![LicenseBadge](https://img.shields.io/badge/License-${license}-green.svg)
     `;
   }
   return '';
@@ -19,8 +19,11 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 //const fs = require('fs');
 
+// follow same format for renderlicenselink as render license badge
+// change contributions and usage to inputs not true/false
+
 function generateMarkdown(data) {
-  const { license, description, ...readmeData } = data;
+  console.log("DATA IN GENERATEMARKDOWN", data)
 
   return `# ${data.title}
 
@@ -28,28 +31,31 @@ function generateMarkdown(data) {
   ${data.description}
 
   ## License
-  ${license}
+${renderLicenseBadge(data.license)}
 
   ## Table of Contents
   
-  [Installation](#installation)
-  [Usage](#usage)
-  [Contributions](#contributions)
-  [Tests](#tests)
+  *[Installation](#installation)
+  *[Usage](#usage)
+  *[Contributions](#contributions)
+  *[Tests](#tests)
 
 
   ## Installation
-  ${data.install}
+  // going to need to rename this
 
   ## Usage
   ${data.usage}
 
   ## Contributions
-  ${data.contribution}
+  ${data.confirmContribution}
 
   ## Tests
   ${data.tests}
 
+  ## Questions
+
+  If you ahve any questions regarding the repo please contact //pu email here and see my other work at //put gibhub here
 `;
 }
 

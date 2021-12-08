@@ -1,183 +1,135 @@
 // TODO: Include packages needed for this application
 const fs = require('fs')
 const inquirer = require('inquirer');
-    console.log(inquirer)
-//const generateFile = ('generateMarkdown');
+const path = require("path")
+const generateMarkDown = require("./utils/generateMarkdown")
 
 
-// TODO: Create an array of questions for user input
-//const questions = [];
-const promptUser = () => {
-return inquirer.prompt([
-    {
-        type: 'input',
-        name: 'github',
-        message: 'Enter your GitHub Username (Required)',
-        validate: githubInput => {
-          if (githubInput) {
-            return true;
-          } else {
-            console.log('Please enter your GitHub username!');
-            return false;
-          }
-        }
-      },
-    ]);
-  };
-  
-const promptProject = readmeData => {
-    console.log(`
-================
-Add a New README
-================
-    `)
-
-    if (!readmeData.projects) {
-        readmeData.projects = [];
-    }
     return inquirer
-        .prompt ([ 
-    {
-        type: 'input',
-        name: 'title',
-        message: "What is the title of your project? (Required)",
-        validate: titleInput => {
-            if (titleInput) {
-                return true;
-            } else {
-                console.log('Please enter the title of your project!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'description',
-        message: "What is the description of your project? (Required)",
-        validate: descriptionInput => {
-            if (descriptionInput) {
-                return true;
-            } else {
-                console.log('Please enter the description of your project!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'confirm',
-        name: 'confirmInstructions',
-        message: 'Would you like to enter Installation Instructions?',
-        default: true
-    },
-    {
-        type: 'input',
-        name: 'instructions',
-        message: 'Provide some installation instructions about your project:',
-        when: ({ confirmInstructions }) => {
-            if (confirmInstructions) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-    {
-        type: 'input',
-        name: 'usage',
-        message: "Please enter Usage information: (Required)",
-        validate: usageInput => {
-            if (usageInput) {
-                return true;
-            } else {
-                console.log('Please enter the usage information of your project!');
-                return false;
-            }
-        }
-    },
-    {
-        type: 'confirm',
-        name: 'confirmContribution',
-        message: 'Would you like to enter Contribution Guidelines?',
-    },
-    {
-        type: 'input',
-        name: 'contribution',
-       message: 'Provide some contribution guidelines to your project:',
-       when: ({ confirmContributions }) => {
-        if (confirmContributions) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    },
-    {
-        type: 'confirm',
-        name: 'confirmTests',
-        message: 'Would you like to enter Test Instructions?',
-        default: false
-    },
-    {
-        type: 'input',
-        name: 'tests',
-        message: 'Provide some test instructions to your project:',
-        when: ({ confirmTests }) => {
-            if (confirmTests ) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-    {
-        type: 'checkbox',
-        name: 'license',
-        message: 'Please choose your license from this list of options:',
-        choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
-    }
-])
-.then(projectData => {
-    readmeData.projects.push(projectData);
-    if (projectData.confirmAddProject) {
-        return promptProject(readmeData);
-    } else {
-        return readmeData;
-    }
-    // let newArray= [];
-    // newArray.push(readmeData);
-    // console.log("newArray:" + newArray)
-   // console.log("readmeData:" + readmeData)
-});
-};
+        .prompt([
+            {
+                type: 'input',
+                name: 'title',
+                message: "What is the title of your project? (Required)",
+                validate: titleInput => {
+                    if (titleInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the title of your project!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'description',
+                message: "What is the description of your project? (Required)",
+                validate: descriptionInput => {
+                    if (descriptionInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the description of your project!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'confirm',
+                name: 'confirmInstructions',
+                message: 'Would you like to enter Installation Instructions?',
+                default: true
+            },
+            {
+                type: 'input',
+                name: 'instructions',
+                message: 'Provide some installation instructions about your project:',
+                when: ({ confirmInstructions }) => {
+                    if (confirmInstructions) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'usage',
+                message: "Please enter Usage information: (Required)",
+                validate: usageInput => {
+                    if (usageInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter the usage information of your project!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'confirm',
+                name: 'confirmContribution',
+                message: 'Would you like to enter Contribution Guidelines?',
+            },
+            {
+                type: 'input',
+                name: 'contribution',
+                message: 'Provide some contribution guidelines to your project:',
+                when: ({ confirmContribution }) => {
+                    if (confirmContribution) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'confirm',
+                name: 'confirmTests',
+                message: 'Would you like to enter Test Instructions?',
+                default: false
+            },
+            {
+                type: 'input',
+                name: 'tests',
+                message: 'Provide some test instructions to your project:',
+                when: ({ confirmTests }) => {
+                    if (confirmTests) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'list',
+                name: 'license',
+                message: 'Please choose your license from this list of options:',
+                choices: ['MIT', 'APACHE 2.0', 'GPL 3.0', 'BSD3', 'None']
+            },
+            {
+                type: 'input',
+                name: 'github',
+                message: 'Enter your GitHub Username (Required)',
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter your GitHub username!');
+                        return false;
+                    }
+                }
+            },
+        ])
+        .then(projectData => {
+            writeToFile("ReadMe.md", generateMarkDown({ ...projectData }))
 
-promptUser()
-.then(promptProject)
-//.then(readmeData => {
-   // return generateFile(readmeData)
-//})
-//.then(readme => {
-   // return writeFile(readme);
-//})
-//.catch(err => {
-    //console.log(err);
-//});
-.then(projectAnswers => console.log(projectAnswers));
+        });
+
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-const generateFile = require('./src/readme-template');
-    console.log(generateFile)
-//fs.writeFile('./src/readme.md', readme, err => {
-    if (err) {
-        console.log(err);
-        return;
-    } 
+
+    return fs.writeFileSync(path.join(process.cwd(), fileName), data)
     console.log('README is complete! Check out readme.md to see the output!')
 };
 
-
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
