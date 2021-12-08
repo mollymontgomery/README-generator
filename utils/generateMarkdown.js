@@ -52,7 +52,7 @@ ${renderLicenseBadge(data.license)}
   *[Usage](#usage)<br>
   *[Contributions](#contributions)<br>
   *[Tests](#tests)<br>
-  *[Questions] (#questions)
+  *[Questions](#questions)
 
 
   ## Installation
@@ -68,8 +68,7 @@ ${renderLicenseBadge(data.license)}
   ${data.tests}
 
   ## Questions
-
-  If you have any questions regarding the repo please contact ${data.email} and see my other work on my github at ${data.github} 
+  If you have any questions regarding the repo please contact ${data.email} and see my other work on my github at [${data.github}](https://www.github.com/${data.github}) 
 `;
 }
 
