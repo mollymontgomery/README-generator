@@ -1,10 +1,10 @@
-# lfkds
+# README.md Generator
 
   ## Description
-  ;flsk
+  This is a command-line application that runs with Node.js. It dynamically generates a README file based on the input about the project. 
 
   ## License
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
   ## Table of Contents
   
@@ -16,10 +16,10 @@
 
 
   ## Installation
-  undefined
+  Run "npm install" in order to install the packages as specified in package.json. You will need to run "node index" in the command line to prompt the questions to generate your README file. After answering all the questions you new file will be named NewReadMe.md. It will genrate a link to your github, show badge and email. 
 
   ## Usage
-  n
+  <iframe src="https://drive.google.com/file/d/1dRRI8VjOIjxYqecj7FGzWinBI5rlcRVV/preview" width="640" height="480"></iframe>
 
   ## Contributions
   undefined

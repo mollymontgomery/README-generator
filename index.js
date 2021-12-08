@@ -143,6 +143,6 @@ const generateMarkDown = require("./utils/generateMarkdown")
 function writeToFile(fileName, data) {
 
     return fs.writeFileSync(path.join(process.cwd(), fileName), data)
-    console.log('README is complete! Check out readme.md to see the output!')
+    console.log('README is complete! Check out NewReadMe.md to see the output!')
 };
 
